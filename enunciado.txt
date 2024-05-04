@@ -1,26 +1,4 @@
-﻿Universidad de Costa Rica
-Escuela de Ciencias de la Computación e Informática
-Semestre I - 2023
-Curso CI-0129
-Profesor: Edgar Casasola Murillo
-	
-
-Programación Lógica
-
-
-
-
-Forma de entrega: Grupos (3)
-	Fecha de entrega:   Jueves 9 de mayo 11:55 p.m.
-	
-
-
-
-Forma de entrega: Subir a plataforma.ecci.ucr.ac.cr la versión final de su trabajo. 
-
-
-Descripción del problema:
-EL RESTAURANTE
+﻿*EL RESTAURANTE*
 
 
 Utilizando Prolog escriba un programa que le permita a los saloneros contestar preguntas específicas basados en el conocimiento del menú, de los ingredientes y de las características de los clientes.
