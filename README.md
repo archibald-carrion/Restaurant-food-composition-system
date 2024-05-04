@@ -93,6 +93,14 @@ Program written in prolog that allows waiters to answer specific questions based
 - leche
 - fresas
 
+**Usual costumers**
+- Israel es alérgica a los hongos
+- Carlos es vegetariano
+- Angie es vegana
+- Chiqui come de todo
+- Luis no come pasta
+- Emilia es intolerante a los lácteos
+
 
 
 ## How to run
