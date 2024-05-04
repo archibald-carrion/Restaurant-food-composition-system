@@ -64,6 +64,36 @@ Program written in prolog that allows waiters to answer specific questions based
 
 *Note: is atun and pescado considered meat?*
 
+**Common dishes & ingredients**
+- Basic pasta (pasta, orégano, tomate, aceite, sal)
+- Hongos al horno (hongos, queso, mantequilla, sal)
+- Ensala Caesar (lechuga, tomate, sal, vinagre)
+
+**Special dishes, main ingredients**
+
+*(Note: Special dishes must contains one of the following ingredients)*
+- pollo (animal product, meat)
+- lomito (animal product, meat)
+- pescado (animal product)
+- atún (animal product)
+- hongos
+
+*(All of those special dishes is cooked using cebolla, sal y vinagre)*
+
+**Special dishes, side dishes** 
+
+*(Note: Special dishes must contains one of the following ingredients)*
+- with potatoes
+- with mushrooms
+- with zuccini
+- with rice
+
+**Ice cream contains**
+- miel
+- leche
+- fresas
+
+
 
 ## How to run
 To run the project, 
