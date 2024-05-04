@@ -2,7 +2,7 @@
 ## Description
 Program written in prolog that allows waiters to answer specific questions based on knowledge of the menu, ingredients, and customer characteristics.
 
-We are able to query:
+### We are able to query:
 
 - [ ] If a client with specific characteristics can consume a specific dish
 - [ ] Can Chiqui eat Mushroom Pasta Special?
@@ -17,6 +17,17 @@ We are able to query:
 - [ ] Prevent a dish that a particular client cannot consume from being approved
 - [ ] Can Angie eat meat special with rice?
 - [ ] In the known database, define a type of client with particular characteristics to know what they can eat. Add Fidel who is a Cannibal that eats Cat meat.
+
+### The program is based on the following knowledge base:
+
+**Common knowledge about the clientel**
+- a vegetarian is a person who does **NOT** eat meat
+- a vegan is a person who does **NOT** eat any animal products
+- an allergic person is a person who does **NOT** eat a specific ingredient
+- one can be alergic to any ingredient
+- in the given context a cannibal is a cat who eats cat meat
+
+
 
 ## How to run
 To run the project, 
