@@ -1,0 +1,83 @@
+﻿Universidad de Costa Rica
+Escuela de Ciencias de la Computación e Informática
+Semestre I - 2023
+Curso CI-0129
+Profesor: Edgar Casasola Murillo
+	
+
+Programación Lógica
+
+
+
+
+Forma de entrega: Grupos (3)
+	Fecha de entrega:   Jueves 9 de mayo 11:55 p.m.
+	
+
+
+
+Forma de entrega: Subir a plataforma.ecci.ucr.ac.cr la versión final de su trabajo. 
+
+
+Descripción del problema:
+EL RESTAURANTE
+
+
+Utilizando Prolog escriba un programa que le permita a los saloneros contestar preguntas específicas basados en el conocimiento del menú, de los ingredientes y de las características de los clientes.
+
+
+El ideal es que se pueda consultar:
+
+
+1. Si un cliente con características específicas puede consumir algún platillo específico
+¿Puede Chiqui comer Especial de Pasta con Hongos?
+2. Si un platillo tiene un ingrediente particular ante la consulta de un usuario
+¿Especial de Hongos con Hongos tiene Hongos?
+3. Recomendar las opciones de platillos que son aptos para un cliente
+¿Qué puede comer Carlos?
+4. Recomendar platos que contienen algún ingrediente deseado
+¿Qué tienen con fresas?
+5. Recomendar plato para un tipo específico de requerimiento dietético. Por ejemplo: para los vegetarianos. ¿Qué hay para un tipo de vegano con arroz?
+6. Evitar que un plato que no puede consumir un cliente particular le sea aprobado
+¿Puede Angie comer especial de carne con arroz?
+7. En la base de datos conocida defina un tipo de cliente con características particulares para saber que puede comer.   Agregar a Fidel que es un Canibal que come carne de Gato.   
+
+
+
+
+SE CUENTA CON LA SIGUIENTE INFORMACIÓN QUE USTED DEBE REPRESENTAR EN PROLOG
+
+
+El vegetariano es alguien que NO come carne. Por lo tanto usted debe especificar cuáles ingredientes son carnes. El vegano no consume NINGÚN PRODUCTO DE ORIGEN ANIMAL. Por lo tanto usted debe indicar cuáles ingredientes son de origen animal: incluida la miel de abeja, leche o sus derivados, ni huevos. Un alérgico no puede comer algún ingrediente específico. Se puede ser alérgico a cualquier cosa. 
+
+
+Los ingredientes del restaurante incluyen: lomito, pollo, pescado, leche, mantequilla, arroz, frijoles, pasta (sin huevo), tomate, lechuga, huevo, miel, chile, maíz, zucchini, hongos, cebolla, sal, queso, repollo, orégano, apio, remolacha, atún, papa, aceite, tofu, leche_de_almendra, café, chocolate, agua, vinagre, fresas. 
+
+
+Menú con sus ingredientes: 
+
+
+1) La pasta básica lleva: pasta, orégano, tomate, aceite, sal 
+
+
+2) Los hongos al horno: hongos, queso, mantequilla, sal 
+
+
+3) La ensalada César: lechuga, tomate, sal, vinagre
+
+
+4) Los platos especiales llevan uno de estos platos principales: pollo, lomito, pescado, atún, hongos. Todos tienen agregado cebolla, sal y vinagre en su preparación. Acompañados con uno de estos: con papa, con hongos, zucchini, o con arroz
+
+
+5) Los helados llevan miel, leche y fresas
+
+
+Se tienen los siguientes clientes frecuentes conocidos: Israel es alérgica a los hongos. Carlos es vegetariano. Angie es vegana. Chiqui come de todo. Luis no come pasta. Emilia es intolerante a los lácteos.
+
+
+
+
+Los platillos especiales son parametrizables: una carne y un acompañamiento. Por lo tanto, en algunos casos alguien si los puede consumir y en otros no dependiendo del acompañamiento y de la carne.
+
+
+HAGA UN PROGRAMA EN PROLOG DONDE UN SALONERO PUEDA RESPONDER A LAS CONSULTAS ANTES MENCIONADAS
