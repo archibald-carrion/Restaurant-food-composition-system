@@ -101,8 +101,6 @@ Program written in prolog that allows waiters to answer specific questions based
 - Luis no come pasta
 - Emilia es intolerante a los lácteos
 
-
-
 ## How to run
 To run the project, 
 
