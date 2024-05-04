@@ -27,6 +27,42 @@ Program written in prolog that allows waiters to answer specific questions based
 - one can be alergic to any ingredient
 - in the given context a cannibal is a cat who eats cat meat
 
+**List of all the components available in the restaurant**
+- lomito (animal product, meat)
+- pollo (animal product, meat)
+- pescado (animal product)
+- atún (animal product)
+- leche (animal product)
+- mantequilla (animal product)
+- queso (animal product)
+- huevo (animal product)
+- miel (animal product)
+- arroz
+- frijoles
+- pasta (sin huevo)
+- tomate
+- lechuga
+- chile
+- maíz
+- zucchini
+- hongos
+- cebolla
+- sal
+- repollo
+- orégano
+- apio
+- remolacha
+- papa
+- aceite
+- tofu
+- leche_de_almendra
+- café
+- chocolate
+- agua
+- vinagre
+- fresas
+
+*Note: is atun and pescado considered meat?*
 
 
 ## How to run
