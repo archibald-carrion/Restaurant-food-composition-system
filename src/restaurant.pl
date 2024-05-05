@@ -14,5 +14,12 @@ contains(basic_pasta, tomate).
 contains(basic_pasta, aceite).
 contains(basic_pasta, sal).
 
+contains(hongos_al_horno, hongos).
+contains(hongos_al_horno, queso).
+contains(hongos_al_horno, mantequilla).
+contains(hongos_al_horno, sal).
 
-
+contains(caesar_salad, lechuga).
+contains(caesar_salad, tomate).
+contains(caesar_salad, sal).
+contains(caesar_salad, vinagre).
