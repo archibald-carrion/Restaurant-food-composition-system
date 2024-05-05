@@ -14,6 +14,10 @@ special_dish_main(pescado).
 special_dish_main(atún).
 special_dish_main(hongos).
 
+special_dish_side(potatoes).
+special_dish_side(rice).
+special_dish_side(mushrooms).
+special_dish_side(zuccini).
 
 contains(basic_pasta, pasta).
 contains(basic_pasta, orégano).
