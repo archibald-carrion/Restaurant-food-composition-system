@@ -8,6 +8,13 @@ animal_product(queso).
 animal_product(huevo).
 animal_product(miel).
 
+special_dish_main(lomito).
+special_dish_main(pollo).
+special_dish_main(pescado).
+special_dish_main(atún).
+special_dish_main(hongos).
+
+
 contains(basic_pasta, pasta).
 contains(basic_pasta, orégano).
 contains(basic_pasta, tomate).
@@ -23,3 +30,4 @@ contains(caesar_salad, lechuga).
 contains(caesar_salad, tomate).
 contains(caesar_salad, sal).
 contains(caesar_salad, vinagre).
+
