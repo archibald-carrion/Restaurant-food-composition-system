@@ -35,3 +35,10 @@ contains(caesar_salad, tomate).
 contains(caesar_salad, sal).
 contains(caesar_salad, vinagre).
 
+contains(ice_cream, leche).
+contains(ice_cream, miel).
+contains(ice_cream, fresas).
+
+# what function to add?
+# can_eat_meal(Person, Meal) :- can_eat_meal(Person, Meal, []).
+# can_eat_meal(Person, Meal, Restrictions) :- can_eat_meal(Person, Meal, Restrictions, []). ?
