@@ -1,17 +1,47 @@
-animal_product(lomito).
-animal_product(pollo).
-animal_product(pescado).
-animal_product(atún).
-animal_product(leche).
-animal_product(mantequilla).
-animal_product(queso).
-animal_product(huevo).
-animal_product(miel).
+animal_product_meat(lomito).
+animal_product_meat(pollo).
+animal_product_meat(pescado).
+animal_product_meat(atún).
+
+animal_product_not_meat(leche).
+animal_product_not_meat(mantequilla).
+animal_product_not_meat(queso).
+animal_product_not_meat(huevo).
+animal_product_not_meat(miel).
 
 not_animal_product(mushrooms).
-not_animal_product(potatoes).
-not_animal_product(rice).
+not_animal_product(arroz).
+not_animal_product(frijoles).
+not_animal_product(pasta).
+not_animal_product(tomate).
+not_animal_product(lechuga).
+not_animal_product(chile).
+not_animal_product(maíz).
+not_animal_product(zucchini).
+not_animal_product(hongos).
+not_animal_product(cebolla).
+not_animal_product(sal).
+not_animal_product(repollo).
+not_animal_product(orégano).
+not_animal_product(apio).
+not_animal_product(remolacha).
+not_animal_product(papa).
+not_animal_product(aceite).
+not_animal_product(tofu).
+not_animal_product(leche_de_almendra).
+not_animal_product(café).
+not_animal_product(chocolate).
+not_animal_product(agua).
+not_animal_product(vinagre).
+not_animal_product(fresas).
 
+/* definition of product not viable for given diet */
+vegan(X):- not_animal_product(X).
+is_vegan_meal(basic_pasta).
+is_vegan_meal(caesar_salad).
+is_vegetarian_meal(X):- animal_product_not_meat(X), not_animal_product(X), vegan(X).
+is_vegetarian_meal(mushrooms_al_horno).
+is_vegetarian_meal(ice_cream).
 
 special_dish_main(lomito).
 special_dish_main(pollo).
@@ -24,49 +54,56 @@ special_dish_side(rice).
 special_dish_side(mushrooms).
 special_dish_side(zuccini).
 
-# TODO: change this to direct users with names
-# diet(vegan).
-# diet(vegetarian).
-# diet(gluten_free).
-# diet(lactose_free).
-# diet(carnivore).
-# EXAMPLE:
-omnivor(chiqui).
-mushroom_allergic(Israel).
-vegetarian(Carlos).
-vegan(Angie).
-lactose_free(Emilia).
-pasta_free(Luis).
+/* USER DEFINITION */
+is_omnivor(chiqui).
+is_mushroom_allergic(israel).
+is_vegetarian(carlos).
+is_vegetarian(vegetarian).
+is_vegan(angie).
+eats_lactose_free(emilia).
+eats_pasta_free(luis).
 
-contains(basic_pasta, pasta).
-contains(basic_pasta, orégano).
-contains(basic_pasta, tomate).
-contains(basic_pasta, aceite).
-contains(basic_pasta, sal).
+# common_meal(basic_pasta).
+# common_meal(mushrooms_al_horno).
+# common_meal(caesar_salad).
+# common_meal(ice_cream).
 
-contains(mushrooms_al_horno, mushrooms).
-contains(mushrooms_al_horno, queso).
-contains(mushrooms_al_horno, mantequilla).
-contains(mushrooms_al_horno, sal).
+# contains(basic_pasta, pasta).
+# contains(basic_pasta, orégano).
+# contains(basic_pasta, tomate).
+# contains(basic_pasta, aceite).
+# contains(basic_pasta, sal).
 
-contains(caesar_salad, lechuga).
-contains(caesar_salad, tomate).
-contains(caesar_salad, sal).
-contains(caesar_salad, vinagre).
+# contains(mushrooms_al_horno, mushrooms).
+# contains(mushrooms_al_horno, queso).
+# contains(mushrooms_al_horno, mantequilla).
+# contains(mushrooms_al_horno, sal).
 
-contains(ice_cream, leche).
-contains(ice_cream, miel).
-contains(ice_cream, fresas).
+# contains(caesar_salad, lechuga).
+# contains(caesar_salad, tomate).
+# contains(caesar_salad, sal).
+# contains(caesar_salad, vinagre).
 
-can_eat_meal(person_diete, common_meal) :-
-    omnivor(person_diete);
-    (lactose_free(person_diete), not(contains(common_meal, leche)));
+# contains(ice_cream, leche).
+# contains(ice_cream, miel).
+# contains(ice_cream, fresas).
 
-can_eat_meal(person_diete, meal_main_dish, meal_side_dish) :-
+can_eat_meal(person_diet, meal) :-
+    is_omnivor(person_diet);
+    (is_vegetarian(person_diet), is_vegetarian_meal(meal));
+    (is_vegan(person_diet), is_vegan_meal(meal)).
+
+# can_eat_meal(person_diet, meal_main_dish, meal_side_dish) :-
 
 
-can_eat_ice_cream(person_diete) :-
+# can_eat_ice_cream(person_diet) :-
 
 # what function to add?
 # can_eat_meal(Person, Meal) :- can_eat_meal(Person, Meal, []).
 # can_eat_meal(Person, Meal, Restrictions) :- can_eat_meal(Person, Meal, Restrictions, []). ?
+
+
+
+
+
+
