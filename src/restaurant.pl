@@ -63,35 +63,12 @@ is_vegan(angie).
 eats_lactose_free(emilia).
 eats_pasta_free(luis).
 
-# common_meal(basic_pasta).
-# common_meal(mushrooms_al_horno).
-# common_meal(caesar_salad).
-# common_meal(ice_cream).
+can_eat_meal(D, M) :-
+    is_omnivor(D);
+    (is_vegetarian(D), is_vegetarian_meal(M));
+    (is_vegan(D), is_vegan_meal(M)).
 
-# contains(basic_pasta, pasta).
-# contains(basic_pasta, orégano).
-# contains(basic_pasta, tomate).
-# contains(basic_pasta, aceite).
-# contains(basic_pasta, sal).
 
-# contains(mushrooms_al_horno, mushrooms).
-# contains(mushrooms_al_horno, queso).
-# contains(mushrooms_al_horno, mantequilla).
-# contains(mushrooms_al_horno, sal).
-
-# contains(caesar_salad, lechuga).
-# contains(caesar_salad, tomate).
-# contains(caesar_salad, sal).
-# contains(caesar_salad, vinagre).
-
-# contains(ice_cream, leche).
-# contains(ice_cream, miel).
-# contains(ice_cream, fresas).
-
-can_eat_meal(person_diet, meal) :-
-    is_omnivor(person_diet);
-    (is_vegetarian(person_diet), is_vegetarian_meal(meal));
-    (is_vegan(person_diet), is_vegan_meal(meal)).
 
 # can_eat_meal(person_diet, meal_main_dish, meal_side_dish) :-
 
@@ -101,9 +78,3 @@ can_eat_meal(person_diet, meal) :-
 # what function to add?
 # can_eat_meal(Person, Meal) :- can_eat_meal(Person, Meal, []).
 # can_eat_meal(Person, Meal, Restrictions) :- can_eat_meal(Person, Meal, Restrictions, []). ?
-
-
-
-
-
-
