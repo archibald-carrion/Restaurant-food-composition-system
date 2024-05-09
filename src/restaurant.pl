@@ -35,16 +35,18 @@ not_animal_product(agua).
 not_animal_product(vinagre).
 not_animal_product(fresas).
 
-/* definition of product not viable for given diet */
+/* definition of common meals and if they are viable for specific diet*/
 is_vegan_meal(basic_pasta).
 is_vegan_meal(caesar_salad).
 is_vegetarian_meal(X):- is_vegan_meal(X).
 is_vegetarian_meal(mushrooms_al_horno).
 is_vegetarian_meal(ice_cream).
 
+/* definition of special meals main dishes and if they are viable for specific diet*/
 is_vegan_main_dish(mushroom).
 is_vegetarian_main_dish(X):- is_vegan_main_dish(X).
 
+/* definition of special meals side dishes and if they are viable for specific diet*/
 is_vegan_side_dish(mushroom).
 is_vegan_side_dish(potatoes).
 is_vegan_side_dish(zuccini).
