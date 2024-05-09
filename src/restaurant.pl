@@ -56,12 +56,12 @@ is_lactose_free_main_dish(hongos).
 is_vegan_side_dish(hongos).
 is_vegan_side_dish(potatoes).
 is_vegan_side_dish(zuccini).
-is_vegan_side_dish(rice).
+is_vegan_side_dish(arroz).
 is_vegetarian_side_dish(X):- is_vegan_side_dish(X).
 is_lactose_free_side_dish(hongos).
 is_lactose_free_side_dish(potatoes).
 is_lactose_free_side_dish(zuccini).
-is_lactose_free_side_dish(rice).
+is_lactose_free_side_dish(arroz).
 
 /*Basic Pasta*/
 has_ingredient(basic_pasta, pasta).
@@ -88,17 +88,17 @@ has_ingredient(ice_cream, leche).
 has_ingredient(ice_cream, fresas).
 
 /*Main Dishes*/
-has_ingredient(pollo,pollo).
-has_ingredient(lomito,lomito).
-has_ingredient(pescado,pescado).
-has_ingredient(atún,atún).
-has_ingredient(hongos,hongos).
+is_main_dish(pollo).
+is_main_dish(lomito).
+is_main_dish(pescado).
+is_main_dish(atún).
+is_main_dish(hongos).
 
 /*Side Dishes*/
-has_ingredient(potatoes,potatoes).
-has_ingredient(hongos,hongos).
-has_ingredient(zuccini,zuccini).
-has_ingredient(arroz,arroz).
+is_side_dish(potatoes).
+is_side_dish(hongos).
+is_side_dish(zuccini).
+is_side_dish(arroz).
 
 
 /*
@@ -109,7 +109,7 @@ special_dish_main(atún).
 special_dish_main(hongos).
 
 special_dish_side(potatoes).
-special_dish_side(rice).
+special_dish_side(arroz).
 special_dish_side(hongos).
 special_dish_side(zuccini).
 */
@@ -145,14 +145,14 @@ can_eat_meal(D, M) :-
 can_eat_special_meal(D, MD, SD) :-
     is_omnivor(D);
     (is_vegetarian(D), is_vegetarian_main_dish(MD), is_vegetarian_side_dish(SD));
-    (is_vegan(D), is_vegan_main_dish(MD), is_vegan_side_dish(SD), not_animal_product(MD), not_animal_product(SD));
+    (is_vegan(D), is_vegan_main_dish(MD), is_vegan_side_dish(SD));
     (eats_lactose_free(D), is_lactose_free_main_dish(MD), is_lactose_free_side_dish(SD)).
 
 dish_has_ingredient(D, I) :-
     has_ingredient(D,I).
 
 special_dish_has_ingredient(MD, SD, I) :-
-    (has_ingredient(MD,I);has_ingredient(SD,I)).
+    (is_main_dish(MD), MD = I;is_side_dish(SD), SD = I).
 
 can_eat_meal_diet_ingredients(D, M, I) :-
  	(dish_has_ingredient(M, I),can_eat_meal(D, M)).
