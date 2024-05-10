@@ -1,19 +1,13 @@
 animal_product_meat(lomito).
-lactose_friendly(lomito).
 animal_product_meat(pollo).
-lactose_friendly(pollo).
 animal_product_meat(pescado).
-lactose_friendly(pescado).
 animal_product_meat(atún).
-lactose_friendly(atún).
 
 animal_product_not_meat(leche).
 animal_product_not_meat(mantequilla).
 animal_product_not_meat(queso).
 animal_product_not_meat(huevo).
-lactose_friendly(huevo).
 animal_product_not_meat(miel).
-lactose_friendly(miel).
 
 not_animal_product(hongos).
 not_animal_product(arroz).
@@ -41,6 +35,12 @@ not_animal_product(agua).
 not_animal_product(vinagre).
 not_animal_product(fresas).
 
+lactose_friendly(lomito).
+lactose_friendly(pollo).
+lactose_friendly(pescado).
+lactose_friendly(atún).
+lactose_friendly(miel).
+lactose_friendly(huevo).
 lactose_friendly(X) :- not_animal_product(X).
 
 /* definition of common meals and if they are viable for specific diet*/
@@ -164,6 +164,12 @@ are_all_components_vegan_friendly([Component|Rest]) :-
     not_animal_product(Component),
     are_all_components_vegan_friendly(Rest).
 
+
+are_all_components_vegetarian_friendly([]).
+are_all_components_vegetarian_friendly([Component|Rest]) :-
+    (not_animal_product(Component); animal_product_not_meat(Component)),
+    are_all_components_vegetarian_friendly(Rest).
+
 /* Check if any component of a meal is not vegan-friendly 
 is_meal_vegan_friendly(Meal) :-
     meal(Meal, Components),
@@ -187,16 +193,17 @@ is_meal_vegan_friendly(Meal) :-
 /* check if a given diet or user with given diet can eat common meal*/
 can_eat_meal(D, M) :-
     is_omnivor(D);
-    (is_vegetarian(D), is_vegetarian_meal(M));
-    (meal(M, Components), are_all_components_vegan_friendly(Components));
-    (eats_lactose_free(D), is_lactose_free_meal(M)).
+    /*(is_vegetarian(D), is_vegetarian_meal(M)); */
+    (is_vegetarian(D), common_meal(M, Components), are_all_components_vegetarian_friendly(Components));
+    (is_vegan(D), common_meal(M, Components), are_all_components_vegan_friendly(Components)).
+    /*(is_lactose_intolerant(D), is_lactose_free_meal(M)).*/
 
 /* check if a given diet or user with given diet can eat special meal*/
 can_eat_special_meal(D, MD, SD) :-
     is_omnivor(D);
     (is_vegetarian(D), is_vegetarian_main_dish(MD), is_vegetarian_side_dish(SD));
-    (is_vegan(D), is_vegan_main_dish(MD), is_vegan_side_dish(SD));
-    (eats_lactose_free(D), is_lactose_free_main_dish(MD), is_lactose_free_side_dish(SD)).
+    (is_vegan(D), is_vegan_main_dish(MD), is_vegan_side_dish(SD)).
+    /*(is_lactose_intolerant(D), is_lactose_free_main_dish(MD), is_lactose_free_side_dish(SD)).*/
 
 dish_has_ingredient(D, I) :-
     has_ingredient(D,I).
@@ -210,6 +217,7 @@ can_eat_meal_diet_ingredients(D, M, I) :-
 can_eat_special_meal_diet_ingredients(D, MD, SD, I) :-
     (special_dish_has_ingredient(MD, SD, I),can_eat_special_meal(D, MD, SD)).
 
-
+/*
 can_alergic_eat(ELEMENT_ALERGIC_TO, M) :-
     is_allergic(D, I), dish_has_ingredient(M, I).
+    */
