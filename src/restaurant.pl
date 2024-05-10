@@ -3,7 +3,6 @@ animal_product_meat(pollo).
 animal_product_meat(pescado).
 animal_product_meat(atún).
 
-
 vegan_friendly(hongos).
 vegan_friendly(arroz).
 vegan_friendly(frijoles).
@@ -65,6 +64,7 @@ lactose_friendly(pescado).
 lactose_friendly(atún).
 lactose_friendly(miel).
 lactose_friendly(huevo).
+lactose_friendly(X) :- vegan_friendly(X).
 
 
 special_dish_main(lomito, [lomito, cebolla, sal, vinagre]).
@@ -110,11 +110,17 @@ are_all_components_vegetarian_friendly([Component|Rest]) :-
     vegetarian_friendly(Component),
     are_all_components_vegetarian_friendly(Rest).
 
+are_all_components_lactose_friendly([]).
+are_all_components_lactose_friendly([Component|Rest]) :-
+    lactose_friendly(Component),
+    are_all_components_lactose_friendly(Rest).
+
 /* Check if a given diet or user with given diet can eat common meal*/
 can_eat_meal(Diet, Meals) :-
     is_omnivor(Diet);
     (is_vegetarian(Diet), common_meal(Meals, Components), are_all_components_vegetarian_friendly(Components));
     (is_vegan(Diet), common_meal(Meals, Components), are_all_components_vegan_friendly(Components));
+    (is_lactose_intolerant(Diet), common_meal(Meals, Components), are_all_components_lactose_friendly(Components));
     (cat_cannibal(Diet), false).
 
 /* Define predicate to check if a meal contains an ingredient, used in recommendation_that_contains */
