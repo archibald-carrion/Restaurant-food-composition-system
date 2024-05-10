@@ -114,7 +114,8 @@ are_all_components_vegetarian_friendly([Component|Rest]) :-
 can_eat_meal(Diet, Meals) :-
     is_omnivor(Diet);
     (is_vegetarian(Diet), common_meal(Meals, Components), are_all_components_vegetarian_friendly(Components));
-    (is_vegan(Diet), common_meal(Meals, Components), are_all_components_vegan_friendly(Components)).
+    (is_vegan(Diet), common_meal(Meals, Components), are_all_components_vegan_friendly(Components));
+    (cat_cannibal(Diet), false).
 
 /* Define predicate to check if a meal contains an ingredient, used in recommendation_that_contains */
 meal_contains_ingredient(Meal, Ingredient) :-
