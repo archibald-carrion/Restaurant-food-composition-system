@@ -67,83 +67,6 @@ lactose_friendly(miel).
 lactose_friendly(huevo).
 */
 
-/* definition of common meals and if they are viable for specific diet*/
-/*
-is_vegan_meal(basic_pasta).
-is_vegan_meal(caesar_salad).
-is_vegetarian_meal(X):- is_vegan_meal(X).
-is_vegetarian_meal(hongos_al_horno).
-is_vegetarian_meal(ice_cream).
-is_lactose_free_meal(basic_pasta).
-is_lactose_free_meal(caesar_salad).
-*/
-
-/* definition of special meals main dishes and if they are viable for specific diet*/
-/*
-is_vegan_main_dish(hongos).
-is_vegetarian_main_dish(X):- is_vegan_main_dish(X).
-is_lactose_free_main_dish(pollo).
-is_lactose_free_main_dish(lomito).
-is_lactose_free_main_dish(pescado).
-is_lactose_free_main_dish(atún).
-is_lactose_free_main_dish(hongos).
-*/
-/* definition of special meals side dishes and if they are viable for specific diet*/
-/*
-is_vegan_side_dish(hongos).
-is_vegan_side_dish(potatoes).
-is_vegan_side_dish(zuccini).
-is_vegan_side_dish(arroz).
-is_vegetarian_side_dish(X):- is_vegan_side_dish(X).
-is_lactose_free_side_dish(hongos).
-is_lactose_free_side_dish(potatoes).
-is_lactose_free_side_dish(zuccini).
-is_lactose_free_side_dish(arroz).
-*/
-
-/*Basic Pasta*/
-/*
-has_ingredient(basic_pasta, pasta).
-has_ingredient(basic_pasta, orégano).
-has_ingredient(basic_pasta, tomate).
-has_ingredient(basic_pasta, aceite).
-has_ingredient(basic_pasta, sal). */
-
-/*Caesar Salad*/
-/*
-has_ingredient(caesar_salad, lechuga).
-has_ingredient(caesar_salad, tomate).
-has_ingredient(caesar_salad, vinagre).
-has_ingredient(caesar_salad, sal). */
-
-/*Hongos al horno*/
-/*
-has_ingredient(hongos_al_horno, hongos).
-has_ingredient(hongos_al_horno, queso).
-has_ingredient(hongos_al_horno, mantequilla).
-has_ingredient(hongos_al_horno, sal). */
-
-/*Ice cream*/
-/*
-has_ingredient(ice_cream, miel).
-has_ingredient(ice_cream, leche).
-has_ingredient(ice_cream, fresas). */
-
-/*Main Dishes
-is_main_dish(pollo).
-is_main_dish(lomito).
-is_main_dish(pescado).
-is_main_dish(atún).
-is_main_dish(hongos).*/
-
-/*Side Dishes
-is_side_dish(potatoes).
-is_side_dish(hongos).
-is_side_dish(zucchini).
-is_side_dish(arroz).*/
-
-
-
 special_dish_main(lomito).
 special_dish_main(pollo).
 special_dish_main(pescado).
@@ -159,19 +82,14 @@ special_dish_side(zucchini).
 /* USER DEFINITION */
 is_omnivor(omnivor).
 is_omnivor(chiqui).
-
 is_vegetarian(vegetarian).
 is_vegetarian(carlos).
-
 is_vegan(vegan).
 is_vegan(angie).
-
 is_lactose_intolerant(lactose_intolerant).
 is_lactose_intolerant(emilia).
-
 is_pasta_intolerant(pasta_intolerant).
 is_pasta_intolerant(luis).
-
 is_allergic(israel, hongos).
 
 /* Define meals with their specific components */
@@ -210,11 +128,14 @@ special_dish_contains_side(SideDish, Side) :-
     special_dish_side(SideDish),
     Side = SideDish.
 
+
+:- use_module(library(lists)).
+
 /* Predicate to find all meals that contain a given ingredient */
 recommendation_that_contains(Ingredient, Meals) :-
-    findall(Meal, meal_contains_ingredient(Meal, Ingredient), Meals),
+    findall(Meal, meal_contains_ingredient(Meal, Ingredient), CommonMeals),
     findall(MainDish-SideDish, (special_dish_contains_main(MainDish, Ingredient), special_dish_contains_side(SideDish, Ingredient)), SpecialMeals),
-    append(Meals, SpecialMeals).
+	append(CommonMeals, SpecialMeals, Meals).
 
 /* List/check what special meal composed of main dish and side dish can a client with given diet can eat or not */
 can_eat_meal(Diet, MainDish, SideDish) :-
