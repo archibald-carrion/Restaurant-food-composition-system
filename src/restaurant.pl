@@ -192,12 +192,20 @@ are_all_components_vegetarian_friendly([Component|Rest]) :-
     are_all_components_vegetarian_friendly(Rest).
 
 /* Check if a given diet or user with given diet can eat common meal*/
-can_eat_meal(D, M) :-
-    is_omnivor(D);
-    (is_vegetarian(D), common_meal(M, Components), are_all_components_vegetarian_friendly(Components));
-    (is_vegan(D), common_meal(M, Components), are_all_components_vegan_friendly(Components)).
+can_eat_meal(Diet, Meals) :-
+    is_omnivor(Diet);
+    (is_vegetarian(Diet), common_meal(Meals, Components), are_all_components_vegetarian_friendly(Components));
+    (is_vegan(Diet), common_meal(Meals, Components), are_all_components_vegan_friendly(Components)).
 
+    
+/* Define predicate to check if a meal contains an ingredient */
+meal_contains_ingredient(Meal, Ingredient) :-
+    common_meal(Meal, Ingredients),
+    member(Ingredient, Ingredients).
 
+/* Predicate to find all meals that contain a given ingredient */
+recommendation_that_contains(Ingredient, Meals) :-
+    findall(Meal, meal_contains_ingredient(Meal, Ingredient), Meals).
 
 
 
