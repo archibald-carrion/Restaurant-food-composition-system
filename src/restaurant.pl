@@ -67,11 +67,11 @@ lactose_friendly(miel).
 lactose_friendly(huevo).
 */
 
-special_dish_main(lomito).
-special_dish_main(pollo).
-special_dish_main(pescado).
-special_dish_main(atún).
-special_dish_main(hongos).
+special_dish_main(lomito, [lomito, cebolla, sal, vinagre]).
+special_dish_main(pollo, [pollo, cebolla, sal, vinagre]).
+special_dish_main(pescado, [pescado, cebolla, sal, vinagre]).
+special_dish_main(atún, [atún, cebolla, sal, vinagre]).
+special_dish_main(hongos, [hongos, cebolla, sal, vinagre]).
 
 special_dish_side(papa).
 special_dish_side(arroz).
@@ -120,22 +120,31 @@ meal_contains_ingredient(Meal, Ingredient) :-
     common_meal(Meal, Ingredients),
     member(Ingredient, Ingredients).
 
+
 special_dish_contains_main(MainDish, Main) :-
-    special_dish_main(MainDish),
-    Main = MainDish.
+    special_dish_main(MainDish, Mains),
+    member(Main, Mains).
+
 
 special_dish_contains_side(SideDish, Side) :-
     special_dish_side(SideDish),
     Side = SideDish.
 
-
-:- use_module(library(lists)).
-
 /* Predicate to find all meals that contain a given ingredient */
+/*
 recommendation_that_contains(Ingredient, Meals) :-
     findall(Meal, meal_contains_ingredient(Meal, Ingredient), CommonMeals),
     findall(MainDish-SideDish, (special_dish_contains_main(MainDish, Ingredient), special_dish_contains_side(SideDish, Ingredient)), SpecialMeals),
 	append(CommonMeals, SpecialMeals, Meals).
+*/
+recommendation_that_contains(Ingredient, Meals) :-
+    findall(Meal, meal_contains_ingredient(Meal, Ingredient), CommonMeals),
+    findall(Meal, special_dish_contains_main(Meal, Ingredient), SpecialMealMain),
+    findall(Meal, special_dish_contains_side(Meal, Ingredient), SpecialMealSide),
+    append(CommonMeals, SpecialMealMain, TempMeals),
+    append(TempMeals, SpecialMealSide, Meals).
+
+
 
 /* List/check what special meal composed of main dish and side dish can a client with given diet can eat or not */
 can_eat_meal(Diet, MainDish, SideDish) :-
@@ -151,3 +160,8 @@ can_eat_meal(Diet, MainDish, SideDish) :-
 meal_contains_component(Meal, Component) :-
     common_meal(Meal, Components),
     member(Component, Components).
+
+
+special_dish_contains_maindish(MainDish, Component) :-
+    special_dish_main(MainDish),
+    member(Component, MainDish).
