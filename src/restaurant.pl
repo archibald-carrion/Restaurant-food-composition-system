@@ -129,32 +129,32 @@ has_ingredient(ice_cream, miel).
 has_ingredient(ice_cream, leche).
 has_ingredient(ice_cream, fresas). */
 
-/*Main Dishes*/
+/*Main Dishes
 is_main_dish(pollo).
 is_main_dish(lomito).
 is_main_dish(pescado).
 is_main_dish(atún).
-is_main_dish(hongos).
+is_main_dish(hongos).*/
 
-/*Side Dishes*/
+/*Side Dishes
 is_side_dish(potatoes).
 is_side_dish(hongos).
-is_side_dish(zuccini).
-is_side_dish(arroz).
+is_side_dish(zucchini).
+is_side_dish(arroz).*/
 
 
-/*
+
 special_dish_main(lomito).
 special_dish_main(pollo).
 special_dish_main(pescado).
 special_dish_main(atún).
 special_dish_main(hongos).
 
-special_dish_side(potatoes).
+special_dish_side(papa).
 special_dish_side(arroz).
 special_dish_side(hongos).
-special_dish_side(zuccini).
-*/
+special_dish_side(zucchini).
+
 
 /* USER DEFINITION */
 is_omnivor(omnivor).
@@ -197,15 +197,62 @@ can_eat_meal(Diet, Meals) :-
     (is_vegetarian(Diet), common_meal(Meals, Components), are_all_components_vegetarian_friendly(Components));
     (is_vegan(Diet), common_meal(Meals, Components), are_all_components_vegan_friendly(Components)).
 
-    
-/* Define predicate to check if a meal contains an ingredient */
+/* Define predicate to check if a meal contains an ingredient, used in recommendation_that_contains */
 meal_contains_ingredient(Meal, Ingredient) :-
     common_meal(Meal, Ingredients),
     member(Ingredient, Ingredients).
 
+special_dish_contains_main(MainDish, Main) :-
+    special_dish_main(MainDish),
+    Main = MainDish.
+
+special_dish_contains_side(SideDish, Side) :-
+    special_dish_side(SideDish),
+    Side = SideDish.
+
 /* Predicate to find all meals that contain a given ingredient */
 recommendation_that_contains(Ingredient, Meals) :-
-    findall(Meal, meal_contains_ingredient(Meal, Ingredient), Meals).
+    findall(Meal, meal_contains_ingredient(Meal, Ingredient), Meals),
+    findall(MainDish-SideDish, (special_dish_contains_main(MainDish, Ingredient), special_dish_contains_side(SideDish, Ingredient)), SpecialMeals),
+    append(Meals, SpecialMeals).
+
+/* List/check what special meal composed of main dish and side dish can a client with given diet can eat or not */
+can_eat_meal(Diet, MainDish, SideDish) :-
+    (is_omnivor(Diet);
+    is_vegetarian(Diet),
+        special_dish_contains_main(MainDish, Main), vegetarian_friendly(Main),
+        special_dish_contains_side(SideDish, Side), vegetarian_friendly(Side);
+    is_vegan(Diet),
+        special_dish_contains_main(MainDish, Main), vegan_friendly(Main),
+        special_dish_contains_side(SideDish, Side), vegan_friendly(Side)).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
