@@ -128,23 +128,17 @@ meal_contains_ingredient(Meal, Ingredient) :-
     common_meal(Meal, Ingredients),
     member(Ingredient, Ingredients).
 
-
+/* Define predicate to check what the main dish of a special meal contains */
 special_dish_contains_main(MainDish, Main) :-
     special_dish_main(MainDish, Mains),
     member(Main, Mains).
 
-
+/* Define predicate to check what the side dish of a special meal contains */
 special_dish_contains_side(SideDish, Side) :-
     special_dish_side(SideDish),
     Side = SideDish.
 
 /* Predicate to find all meals that contain a given ingredient */
-/*
-recommendation_that_contains(Ingredient, Meals) :-
-    findall(Meal, meal_contains_ingredient(Meal, Ingredient), CommonMeals),
-    findall(MainDish-SideDish, (special_dish_contains_main(MainDish, Ingredient), special_dish_contains_side(SideDish, Ingredient)), SpecialMeals),
-	append(CommonMeals, SpecialMeals, Meals).
-*/
 recommendation_that_contains(Ingredient, Meals) :-
     findall(Meal, meal_contains_ingredient(Meal, Ingredient), CommonMeals),
     findall(Meal, special_dish_contains_main(Meal, Ingredient), SpecialMealMain),
@@ -162,7 +156,7 @@ can_eat_meal(Diet, MainDish, SideDish) :-
         special_dish_main(MainDish, Main), are_all_components_vegan_friendly(Main),
         special_dish_contains_side(SideDish, Side), vegan_friendly(Side));
     (is_lactose_intolerant(Diet),
-        special_dish_contains_main(MainDish, Main), lactose_friendly(Main),
+        special_dish_main(MainDish, Main), are_all_components_lactose_friendly(Main),
         special_dish_contains_side(SideDish, Side), lactose_friendly(Side));
     (cat_cannibal(Diet), false).
 
