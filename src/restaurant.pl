@@ -3,45 +3,69 @@ animal_product_meat(pollo).
 animal_product_meat(pescado).
 animal_product_meat(atún).
 
-animal_product_not_meat(leche).
-animal_product_not_meat(mantequilla).
-animal_product_not_meat(queso).
-animal_product_not_meat(huevo).
-animal_product_not_meat(miel).
 
-not_animal_product(hongos).
-not_animal_product(arroz).
-not_animal_product(frijoles).
-not_animal_product(pasta).
-not_animal_product(tomate).
-not_animal_product(lechuga).
-not_animal_product(chile).
-not_animal_product(maíz).
-not_animal_product(zucchini).
-not_animal_product(hongos).
-not_animal_product(cebolla).
-not_animal_product(sal).
-not_animal_product(repollo).
-not_animal_product(orégano).
-not_animal_product(apio).
-not_animal_product(remolacha).
-not_animal_product(papa).
-not_animal_product(aceite).
-not_animal_product(tofu).
-not_animal_product(leche_de_almendra).
-not_animal_product(café).
-not_animal_product(chocolate).
-not_animal_product(agua).
-not_animal_product(vinagre).
-not_animal_product(fresas).
+vegan_friendly(hongos).
+vegan_friendly(arroz).
+vegan_friendly(frijoles).
+vegan_friendly(pasta).
+vegan_friendly(tomate).
+vegan_friendly(lechuga).
+vegan_friendly(chile).
+vegan_friendly(maíz).
+vegan_friendly(zucchini).
+vegan_friendly(cebolla).
+vegan_friendly(sal).
+vegan_friendly(repollo).
+vegan_friendly(orégano).
+vegan_friendly(apio).
+vegan_friendly(remolacha).
+vegan_friendly(papa).
+vegan_friendly(aceite).
+vegan_friendly(tofu).
+vegan_friendly(leche_de_almendra).
+vegan_friendly(café).
+vegan_friendly(chocolate).
+vegan_friendly(agua).
+vegan_friendly(vinagre).
+vegan_friendly(fresas).
 
+vegetarian_friendly(hongos).
+vegetarian_friendly(arroz).
+vegetarian_friendly(frijoles).
+vegetarian_friendly(pasta).
+vegetarian_friendly(tomate).
+vegetarian_friendly(lechuga).
+vegetarian_friendly(chile).
+vegetarian_friendly(maíz).
+vegetarian_friendly(zucchini).
+vegetarian_friendly(cebolla).
+vegetarian_friendly(sal).
+vegetarian_friendly(repollo).
+vegetarian_friendly(orégano).
+vegetarian_friendly(apio).
+vegetarian_friendly(remolacha).
+vegetarian_friendly(papa).
+vegetarian_friendly(aceite).
+vegetarian_friendly(tofu).
+vegetarian_friendly(leche_de_almendra).
+vegetarian_friendly(café).
+vegetarian_friendly(chocolate).
+vegetarian_friendly(agua).
+vegetarian_friendly(vinagre).
+vegetarian_friendly(fresas).
+vegetarian_friendly(leche).
+vegetarian_friendly(mantequilla).
+vegetarian_friendly(queso).
+vegetarian_friendly(huevo).
+vegetarian_friendly(miel).
+/*
 lactose_friendly(lomito).
 lactose_friendly(pollo).
 lactose_friendly(pescado).
 lactose_friendly(atún).
 lactose_friendly(miel).
 lactose_friendly(huevo).
-lactose_friendly(X) :- not_animal_product(X).
+*/
 
 /* definition of common meals and if they are viable for specific diet*/
 /*
@@ -55,6 +79,7 @@ is_lactose_free_meal(caesar_salad).
 */
 
 /* definition of special meals main dishes and if they are viable for specific diet*/
+/*
 is_vegan_main_dish(hongos).
 is_vegetarian_main_dish(X):- is_vegan_main_dish(X).
 is_lactose_free_main_dish(pollo).
@@ -62,7 +87,9 @@ is_lactose_free_main_dish(lomito).
 is_lactose_free_main_dish(pescado).
 is_lactose_free_main_dish(atún).
 is_lactose_free_main_dish(hongos).
+*/
 /* definition of special meals side dishes and if they are viable for specific diet*/
+/*
 is_vegan_side_dish(hongos).
 is_vegan_side_dish(potatoes).
 is_vegan_side_dish(zuccini).
@@ -72,6 +99,7 @@ is_lactose_free_side_dish(hongos).
 is_lactose_free_side_dish(potatoes).
 is_lactose_free_side_dish(zuccini).
 is_lactose_free_side_dish(arroz).
+*/
 
 /*Basic Pasta*/
 /*
@@ -134,7 +162,6 @@ is_omnivor(chiqui).
 
 is_vegetarian(vegetarian).
 is_vegetarian(carlos).
-is_vegetarian(vegetarian).
 
 is_vegan(vegan).
 is_vegan(angie).
@@ -153,50 +180,30 @@ common_meal(caesar_salad, [lechuga, tomate, vinagre, sal]).
 common_meal(hongos_al_horno, [hongos, queso, mantequilla, sal]).
 common_meal(ice_cream, [miel, leche, fresas]).
 
-/* Check if a component is vegan-friendly
-is_vegan_friendly(Component) :-
-    vegan_friendly(Component).
-*/
-
 /* Check if all components of a meal are vegan-friendly */
 are_all_components_vegan_friendly([]).
 are_all_components_vegan_friendly([Component|Rest]) :-
-    not_animal_product(Component),
+    vegan_friendly(Component),
     are_all_components_vegan_friendly(Rest).
-
 
 are_all_components_vegetarian_friendly([]).
 are_all_components_vegetarian_friendly([Component|Rest]) :-
-    (not_animal_product(Component); animal_product_not_meat(Component)),
+    vegetarian_friendly(Component),
     are_all_components_vegetarian_friendly(Rest).
 
-/* Check if any component of a meal is not vegan-friendly 
-is_meal_vegan_friendly(Meal) :-
-    meal(Meal, Components),
-    are_all_components_vegan_friendly(Components).
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* check if a given diet or user with given diet can eat common meal*/
+/* Check if a given diet or user with given diet can eat common meal*/
 can_eat_meal(D, M) :-
     is_omnivor(D);
-    /*(is_vegetarian(D), is_vegetarian_meal(M)); */
     (is_vegetarian(D), common_meal(M, Components), are_all_components_vegetarian_friendly(Components));
     (is_vegan(D), common_meal(M, Components), are_all_components_vegan_friendly(Components)).
-    /*(is_lactose_intolerant(D), is_lactose_free_meal(M)).*/
+
+
+
+
+
+
+
+
 
 /* check if a given diet or user with given diet can eat special meal*/
 can_eat_special_meal(D, MD, SD) :-
