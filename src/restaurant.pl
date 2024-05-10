@@ -66,8 +66,12 @@ lactose_friendly(miel).
 lactose_friendly(huevo).
 lactose_friendly(X) :- vegan_friendly(X).
 
-pasta_friendly(X) :- animal_product_meat(X).
-pasta_friendly(X) :- lactose_friendly(X).
+pasta_friendly(lomito).
+pasta_friendly(pollo).
+pasta_friendly(pescado).
+pasta_friendly(atún).
+pasta_friendly(huevo).
+pasta_friendly(miel).
 pasta_friendly(hongos).
 pasta_friendly(arroz).
 pasta_friendly(frijoles).
@@ -95,8 +99,6 @@ pasta_friendly(leche).
 pasta_friendly(mantequilla).
 pasta_friendly(queso).
 
-
-
 special_dish_main(lomito, [lomito, cebolla, sal, vinagre]).
 special_dish_main(pollo, [pollo, cebolla, sal, vinagre]).
 special_dish_main(pescado, [pescado, cebolla, sal, vinagre]).
@@ -107,7 +109,6 @@ special_dish_side(papa).
 special_dish_side(arroz).
 special_dish_side(hongos).
 special_dish_side(zucchini).
-
 
 /* USER DEFINITION */
 is_omnivor(omnivor).
@@ -159,6 +160,7 @@ can_eat_meal(Diet, Meals) :-
     (is_vegetarian(Diet), common_meal(Meals, Components), are_all_components_vegetarian_friendly(Components));
     (is_vegan(Diet), common_meal(Meals, Components), are_all_components_vegan_friendly(Components));
     (is_lactose_intolerant(Diet), common_meal(Meals, Components), are_all_components_lactose_friendly(Components));
+    (is_pasta_intolerant(Diet), common_meal(Meals, Components), are_all_components_pasta_friendly(Components));
     (cat_cannibal(Diet), false).
 
 /* Define predicate to check if a meal contains an ingredient, used in recommendation_that_contains */
@@ -202,6 +204,7 @@ can_eat_meal(Diet, MainDish, SideDish) :-
     (cat_cannibal(Diet), false).
 
 
+/* 
 meal_contains_component(Meal, Component) :-
     common_meal(Meal, Components),
     member(Component, Components).
@@ -214,3 +217,4 @@ special_dish_contains_maindish(MainDish, Component) :-
 does_special_dish_contains(MainDish, SideDish, Component) :-
     special_dish_contains_main(MainDish, Component);
     special_dish_contains_side(SideDish, Component).
+    */
