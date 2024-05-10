@@ -122,6 +122,8 @@ is_lactose_intolerant(emilia).
 is_pasta_intolerant(pasta_intolerant).
 is_pasta_intolerant(luis).
 is_allergic(israel, hongos).
+is_allergic(juan, pasta).
+is_allergic(pablo, vinagre).
 cat_cannibal(fidel).
 
 /* Define meals with their specific components */
@@ -161,6 +163,7 @@ can_eat_meal(Diet, Meals) :-
     (is_vegan(Diet), common_meal(Meals, Components), are_all_components_vegan_friendly(Components));
     (is_lactose_intolerant(Diet), common_meal(Meals, Components), are_all_components_lactose_friendly(Components));
     (is_pasta_intolerant(Diet), common_meal(Meals, Components), are_all_components_pasta_friendly(Components));
+    (is_allergic(Diet, AllergicComponent), common_meal(Meals, Components), \+ member(AllergicComponent, Components), common_meal(Meals, Components));
     (cat_cannibal(Diet), false).
 
 /* Define predicate to check if a meal contains an ingredient, used in recommendation_that_contains */
