@@ -13,7 +13,7 @@ Program written in prolog that allows waiters to answer specific questions based
 - [x] Recommend dishes that contain a desired ingredient
 - [x] What do you have with strawberries?
 - [x] Recommend a dish for a specific type of dietary requirement. For example, for vegetarians.
-- [ ] What is there for a vegan with rice?
+- [x] What is there for a vegan with rice?
 - [ ] Prevent a dish that a particular client cannot consume from being approved
 - [x] Can Angie eat meat special with rice?
 - [ ] In the known database, define a type of client with particular characteristics to know what they can eat. Add Fidel who is a Cannibal that eats Cat meat.
