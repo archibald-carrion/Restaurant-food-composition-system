@@ -58,14 +58,14 @@ vegetarian_friendly(mantequilla).
 vegetarian_friendly(queso).
 vegetarian_friendly(huevo).
 vegetarian_friendly(miel).
-/*
+
 lactose_friendly(lomito).
 lactose_friendly(pollo).
 lactose_friendly(pescado).
 lactose_friendly(atún).
 lactose_friendly(miel).
 lactose_friendly(huevo).
-*/
+
 
 special_dish_main(lomito, [lomito, cebolla, sal, vinagre]).
 special_dish_main(pollo, [pollo, cebolla, sal, vinagre]).
@@ -144,17 +144,18 @@ recommendation_that_contains(Ingredient, Meals) :-
     append(CommonMeals, SpecialMealMain, TempMeals),
     append(TempMeals, SpecialMealSide, Meals).
 
-
-
 /* List/check what special meal composed of main dish and side dish can a client with given diet can eat or not */
 can_eat_meal(Diet, MainDish, SideDish) :-
-    (is_omnivor(Diet);
-    is_vegetarian(Diet),
-        special_dish_contains_main(MainDish, Main), vegetarian_friendly(Main),
-        special_dish_contains_side(SideDish, Side), vegetarian_friendly(Side);
-    is_vegan(Diet),
-        special_dish_contains_main(MainDish, Main), vegan_friendly(Main),
-        special_dish_contains_side(SideDish, Side), vegan_friendly(Side)).
+    (is_omnivor(Diet));
+    (is_vegetarian(Diet),
+        special_dish_main(MainDish, Main), are_all_components_vegetarian_friendly(Main),
+        special_dish_contains_side(SideDish, Side), vegetarian_friendly(Side));
+    (is_vegan(Diet),
+        special_dish_main(MainDish, Main), are_all_components_vegan_friendly(Main),
+        special_dish_contains_side(SideDish, Side), vegan_friendly(Side));
+    (is_lactose_intolerant(Diet),
+        special_dish_contains_main(MainDish, Main), lactose_friendly(Main),
+        special_dish_contains_side(SideDish, Side), lactose_friendly(Side)).
 
 
 meal_contains_component(Meal, Component) :-
