@@ -8,9 +8,9 @@ Program written in prolog that allows waiters to answer specific questions based
 - [x] Can Chiqui eat Mushroom Pasta Special?
 - [ ] If a dish has a particular ingredient when queried by a user
 - [ ] Does Mushroom Special with Mushrooms have Mushrooms?
-- [ ] Recommend dish options that are suitable for a client
-- [ ] What can Carlos eat?
-- [ ] Recommend dishes that contain a desired ingredient
+- [x] Recommend dish options that are suitable for a client
+- [x] What can Carlos eat?
+- [x] Recommend dishes that contain a desired ingredient
 - [x] What do you have with strawberries?
 - [ ] Recommend a dish for a specific type of dietary requirement. For example, for vegetarians.
 - [ ] What is there for a vegan with rice?
