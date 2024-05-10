@@ -1,13 +1,19 @@
 animal_product_meat(lomito).
+lactose_friendly(lomito).
 animal_product_meat(pollo).
+lactose_friendly(pollo).
 animal_product_meat(pescado).
+lactose_friendly(pescado).
 animal_product_meat(atún).
+lactose_friendly(atún).
 
 animal_product_not_meat(leche).
 animal_product_not_meat(mantequilla).
 animal_product_not_meat(queso).
 animal_product_not_meat(huevo).
+lactose_friendly(huevo).
 animal_product_not_meat(miel).
+lactose_friendly(miel).
 
 not_animal_product(hongos).
 not_animal_product(arroz).
@@ -35,7 +41,10 @@ not_animal_product(agua).
 not_animal_product(vinagre).
 not_animal_product(fresas).
 
+lactose_friendly(X) :- not_animal_product(X).
+
 /* definition of common meals and if they are viable for specific diet*/
+/*
 is_vegan_meal(basic_pasta).
 is_vegan_meal(caesar_salad).
 is_vegetarian_meal(X):- is_vegan_meal(X).
@@ -43,6 +52,7 @@ is_vegetarian_meal(hongos_al_horno).
 is_vegetarian_meal(ice_cream).
 is_lactose_free_meal(basic_pasta).
 is_lactose_free_meal(caesar_salad).
+*/
 
 /* definition of special meals main dishes and if they are viable for specific diet*/
 is_vegan_main_dish(hongos).
@@ -64,28 +74,32 @@ is_lactose_free_side_dish(zuccini).
 is_lactose_free_side_dish(arroz).
 
 /*Basic Pasta*/
+/*
 has_ingredient(basic_pasta, pasta).
 has_ingredient(basic_pasta, orégano).
 has_ingredient(basic_pasta, tomate).
 has_ingredient(basic_pasta, aceite).
-has_ingredient(basic_pasta, sal).
+has_ingredient(basic_pasta, sal). */
 
 /*Caesar Salad*/
+/*
 has_ingredient(caesar_salad, lechuga).
 has_ingredient(caesar_salad, tomate).
 has_ingredient(caesar_salad, vinagre).
-has_ingredient(caesar_salad, sal).
+has_ingredient(caesar_salad, sal). */
 
 /*Hongos al horno*/
+/*
 has_ingredient(hongos_al_horno, hongos).
 has_ingredient(hongos_al_horno, queso).
 has_ingredient(hongos_al_horno, mantequilla).
-has_ingredient(hongos_al_horno, sal).
+has_ingredient(hongos_al_horno, sal). */
 
 /*Ice cream*/
+/*
 has_ingredient(ice_cream, miel).
 has_ingredient(ice_cream, leche).
-has_ingredient(ice_cream, fresas).
+has_ingredient(ice_cream, fresas). */
 
 /*Main Dishes*/
 is_main_dish(pollo).
@@ -125,20 +139,56 @@ is_vegetarian(vegetarian).
 is_vegan(vegan).
 is_vegan(angie).
 
-eats_lactose_free(lactose_intolerant).
-eats_lactose_free(emilia).
+is_lactose_intolerant(lactose_intolerant).
+is_lactose_intolerant(emilia).
 
-eats_pasta_free(pasta_free).
-eats_pasta_free(luis).
+is_pasta_intolerant(pasta_intolerant).
+is_pasta_intolerant(luis).
 
-is_allergic(israel,hongos).
+is_allergic(israel, hongos).
+
+/* Define meals with their specific components */
+common_meal(basic_pasta, [pasta, orégano, tomate, aceite, sal]).
+common_meal(caesar_salad, [lechuga, tomate, vinagre, sal]).
+common_meal(hongos_al_horno, [hongos, queso, mantequilla, sal]).
+common_meal(ice_cream, [miel, leche, fresas]).
+
+/* Check if a component is vegan-friendly
+is_vegan_friendly(Component) :-
+    vegan_friendly(Component).
+*/
+
+/* Check if all components of a meal are vegan-friendly */
+are_all_components_vegan_friendly([]).
+are_all_components_vegan_friendly([Component|Rest]) :-
+    not_animal_product(Component),
+    are_all_components_vegan_friendly(Rest).
+
+/* Check if any component of a meal is not vegan-friendly 
+is_meal_vegan_friendly(Meal) :-
+    meal(Meal, Components),
+    are_all_components_vegan_friendly(Components).
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* check if a given diet or user with given diet can eat common meal*/
 can_eat_meal(D, M) :-
     is_omnivor(D);
     (is_vegetarian(D), is_vegetarian_meal(M));
-    (is_vegan(D), is_vegan_meal(M));
+    (meal(M, Components), are_all_components_vegan_friendly(Components));
     (eats_lactose_free(D), is_lactose_free_meal(M)).
 
 /* check if a given diet or user with given diet can eat special meal*/
@@ -159,3 +209,7 @@ can_eat_meal_diet_ingredients(D, M, I) :-
 
 can_eat_special_meal_diet_ingredients(D, MD, SD, I) :-
     (special_dish_has_ingredient(MD, SD, I),can_eat_special_meal(D, MD, SD)).
+
+
+can_alergic_eat(ELEMENT_ALERGIC_TO, M) :-
+    is_allergic(D, I), dish_has_ingredient(M, I).
