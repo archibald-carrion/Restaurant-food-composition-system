@@ -148,3 +148,6 @@ can_eat_meal(Diet, MainDish, SideDish) :-
         special_dish_contains_side(SideDish, Side), vegan_friendly(Side)).
 
 
+meal_contains_component(Meal, Component) :-
+    common_meal(Meal, Components),
+    member(Component, Components).
