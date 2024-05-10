@@ -91,6 +91,7 @@ is_lactose_intolerant(emilia).
 is_pasta_intolerant(pasta_intolerant).
 is_pasta_intolerant(luis).
 is_allergic(israel, hongos).
+cat_cannibal(fidel).
 
 /* Define meals with their specific components */
 common_meal(basic_pasta, [pasta, orégano, tomate, aceite, sal]).
@@ -155,7 +156,8 @@ can_eat_meal(Diet, MainDish, SideDish) :-
         special_dish_contains_side(SideDish, Side), vegan_friendly(Side));
     (is_lactose_intolerant(Diet),
         special_dish_contains_main(MainDish, Main), lactose_friendly(Main),
-        special_dish_contains_side(SideDish, Side), lactose_friendly(Side)).
+        special_dish_contains_side(SideDish, Side), lactose_friendly(Side));
+    (cat_cannibal(Diet), false).
 
 
 meal_contains_component(Meal, Component) :-
