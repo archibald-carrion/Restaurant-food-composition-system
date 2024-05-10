@@ -66,6 +66,36 @@ lactose_friendly(miel).
 lactose_friendly(huevo).
 lactose_friendly(X) :- vegan_friendly(X).
 
+pasta_friendly(X) :- animal_product_meat(X).
+pasta_friendly(X) :- lactose_friendly(X).
+pasta_friendly(hongos).
+pasta_friendly(arroz).
+pasta_friendly(frijoles).
+pasta_friendly(tomate).
+pasta_friendly(lechuga).
+pasta_friendly(chile).
+pasta_friendly(maíz).
+pasta_friendly(zucchini).
+pasta_friendly(cebolla).
+pasta_friendly(sal).
+pasta_friendly(repollo).
+pasta_friendly(orégano).
+pasta_friendly(apio).
+pasta_friendly(remolacha).
+pasta_friendly(papa).
+pasta_friendly(aceite).
+pasta_friendly(tofu).
+pasta_friendly(leche_de_almendra).
+pasta_friendly(café).
+pasta_friendly(chocolate).
+pasta_friendly(agua).
+pasta_friendly(vinagre).
+pasta_friendly(fresas).
+pasta_friendly(leche).
+pasta_friendly(mantequilla).
+pasta_friendly(queso).
+
+
 
 special_dish_main(lomito, [lomito, cebolla, sal, vinagre]).
 special_dish_main(pollo, [pollo, cebolla, sal, vinagre]).
@@ -105,15 +135,23 @@ are_all_components_vegan_friendly([Component|Rest]) :-
     vegan_friendly(Component),
     are_all_components_vegan_friendly(Rest).
 
+/* Check if all components of a meal are vegetarian-friendly */
 are_all_components_vegetarian_friendly([]).
 are_all_components_vegetarian_friendly([Component|Rest]) :-
     vegetarian_friendly(Component),
     are_all_components_vegetarian_friendly(Rest).
 
+/* Check if all components of a meal are lactose-friendly */
 are_all_components_lactose_friendly([]).
 are_all_components_lactose_friendly([Component|Rest]) :-
     lactose_friendly(Component),
     are_all_components_lactose_friendly(Rest).
+
+/* Check if all components of a meal are pasta-friendly */
+are_all_components_pasta_friendly([]).
+are_all_components_pasta_friendly([Component|Rest]) :-
+    pasta_friendly(Component),
+    are_all_components_pasta_friendly(Rest).
 
 /* Check if a given diet or user with given diet can eat common meal*/
 can_eat_meal(Diet, Meals) :-
@@ -158,6 +196,9 @@ can_eat_meal(Diet, MainDish, SideDish) :-
     (is_lactose_intolerant(Diet),
         special_dish_main(MainDish, Main), are_all_components_lactose_friendly(Main),
         special_dish_contains_side(SideDish, Side), lactose_friendly(Side));
+    (is_pasta_intolerant(Diet),
+        special_dish_main(MainDish, Main), are_all_components_pasta_friendly(Main),
+        special_dish_contains_side(SideDish, Side), pasta_friendly(Side));
     (cat_cannibal(Diet), false).
 
 
