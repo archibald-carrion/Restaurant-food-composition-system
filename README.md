@@ -4,7 +4,7 @@ Program written in prolog that allows waiters to answer specific questions based
 
 ### We are able to query:
 
-- [ ] If a client with specific characteristics can consume a specific dish
+- [x] If a client with specific characteristics can consume a specific dish
 - [x] Can Chiqui eat Mushroom Pasta Special?
 - [x] If a dish has a particular ingredient when queried by a user
 - [x] Does Mushroom Special with Mushrooms have Mushrooms?
