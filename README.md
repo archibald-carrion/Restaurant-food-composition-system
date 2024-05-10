@@ -5,17 +5,17 @@ Program written in prolog that allows waiters to answer specific questions based
 ### We are able to query:
 
 - [ ] If a client with specific characteristics can consume a specific dish
-- [ ] Can Chiqui eat Mushroom Pasta Special?
+- [x] Can Chiqui eat Mushroom Pasta Special?
 - [ ] If a dish has a particular ingredient when queried by a user
 - [ ] Does Mushroom Special with Mushrooms have Mushrooms?
 - [ ] Recommend dish options that are suitable for a client
 - [ ] What can Carlos eat?
 - [ ] Recommend dishes that contain a desired ingredient
-- [ ] What do you have with strawberries?
+- [x] What do you have with strawberries?
 - [ ] Recommend a dish for a specific type of dietary requirement. For example, for vegetarians.
 - [ ] What is there for a vegan with rice?
 - [ ] Prevent a dish that a particular client cannot consume from being approved
-- [ ] Can Angie eat meat special with rice?
+- [x] Can Angie eat meat special with rice?
 - [ ] In the known database, define a type of client with particular characteristics to know what they can eat. Add Fidel who is a Cannibal that eats Cat meat.
 
 ### The program is based on the following knowledge base:
