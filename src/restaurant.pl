@@ -165,3 +165,7 @@ meal_contains_component(Meal, Component) :-
 special_dish_contains_maindish(MainDish, Component) :-
     special_dish_main(MainDish),
     member(Component, MainDish).
+
+does_special_dish_contains(MainDish, SideDish, Component) :-
+    special_dish_contains_main(MainDish, Component);
+    special_dish_contains_side(SideDish, Component).
