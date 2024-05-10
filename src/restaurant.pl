@@ -204,6 +204,9 @@ can_eat_meal(Diet, MainDish, SideDish) :-
     (is_pasta_intolerant(Diet),
         special_dish_main(MainDish, Main), are_all_components_pasta_friendly(Main),
         special_dish_contains_side(SideDish, Side), pasta_friendly(Side));
+    (is_allergic(Diet, AllergicComponent), 
+        special_dish_main(MainDish, Main), \+ member(AllergicComponent, Main),
+        special_dish_contains_side(SideDish, Side), AllergicComponent \== Side);
     (cat_cannibal(Diet), false).
 
 
