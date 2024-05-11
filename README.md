@@ -110,6 +110,25 @@ _(Note: Special dishes must contains one of the following ingredients)_
 - Luis no come pasta
 - Emilia es intolerante a los lácteos
 
+**User Manual**
+
+1. for simple meals you have to run the function can_eat_meal(Diet, Meals) where Diet is person who has the special diet and Meals is the list of meals you want to check.
+   For example:
+
+```prolog
+can_eat_meal(angie, Meals).
+```
+
+this will return all the meals Angie can eat.
+
+2. for special meals you have to run the function can_eat_meal(Diet, MainDish, SideDish) where Diet is person who has the special diet, MainDish is the main dish and SideDish is the side dish. For example:
+
+```prolog
+can_eat_meal(carlos, MainDish, SideDish).
+```
+
+this will return all the meals Carlos can eat.
+
 ## Authors
 
 Archibald Emmanuel Carrión Claeys C01736
