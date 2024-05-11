@@ -1,3 +1,9 @@
+/* Autores:
+ * Archibald Emmanuel Carrión Claeys C01736
+ * Fabián Vega Meza C08369
+ * Marlon Esteban Murillo Quesada C15427  
+*/
+
 animal_product_meat(lomito).
 animal_product_meat(pollo).
 animal_product_meat(pescado).
