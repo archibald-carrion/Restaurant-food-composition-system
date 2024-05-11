@@ -1,5 +1,7 @@
 # The Restaurant
+
 ## Description
+
 Program written in prolog that allows waiters to answer specific questions based on knowledge of the menu, ingredients, and customer characteristics.
 
 ### We are able to query:
@@ -21,6 +23,7 @@ Program written in prolog that allows waiters to answer specific questions based
 ### The program is based on the following knowledge base:
 
 **Common knowledge about the clientel**
+
 - a vegetarian is a person who does **NOT** eat meat
 - a vegan is a person who does **NOT** eat any animal products
 - an allergic person is a person who does **NOT** eat a specific ingredient
@@ -28,6 +31,7 @@ Program written in prolog that allows waiters to answer specific questions based
 - in the given context a cannibal is a cat who eats cat meat
 
 **List of all the components available in the restaurant**
+
 - lomito (animal product, meat)
 - pollo (animal product, meat)
 - pescado (animal product)
@@ -62,38 +66,43 @@ Program written in prolog that allows waiters to answer specific questions based
 - vinagre
 - fresas
 
-*Note: is atun and pescado considered meat?*
+_Note: is atun and pescado considered meat?_
 
 **Common dishes & ingredients**
+
 - Basic pasta (pasta, orégano, tomate, aceite, sal)
 - Hongos al horno (hongos, queso, mantequilla, sal)
 - Ensala Caesar (lechuga, tomate, sal, vinagre)
 
 **Special dishes, main ingredients**
 
-*(Note: Special dishes must contains one of the following ingredients)*
+_(Note: Special dishes must contains one of the following ingredients)_
+
 - pollo (animal product, meat)
 - lomito (animal product, meat)
 - pescado (animal product)
 - atún (animal product)
 - hongos
 
-*(All of those special dishes is cooked using cebolla, sal y vinagre)*
+_(All of those special dishes is cooked using cebolla, sal y vinagre)_
 
-**Special dishes, side dishes** 
+**Special dishes, side dishes**
 
-*(Note: Special dishes must contains one of the following ingredients)*
+_(Note: Special dishes must contains one of the following ingredients)_
+
 - with potatoes
 - with mushrooms
 - with zuccini
 - with rice
 
 **Ice cream contains**
+
 - miel
 - leche
 - fresas
 
 **Usual costumers**
+
 - Israel es alérgica a los hongos
 - Carlos es vegetariano
 - Angie es vegana
@@ -101,12 +110,8 @@ Program written in prolog that allows waiters to answer specific questions based
 - Luis no come pasta
 - Emilia es intolerante a los lácteos
 
-## How to run
-To run the project, 
+## Authors
 
-## Code dependencies
-The project uses the following libraries:
-
-## Current implementation and future improvements
-The project is still in development, and there are a few improvements that can be made. Here is a list of the current features and futures improvements:
-- [ ] user friendly GUI
+Archibald Emmanuel Carrión Claeys C01736
+Fabián Vega Meza C08369
+Marlon Esteban Murillo Quesada C15427
