@@ -9,8 +9,8 @@ animal_product_meat(pollo).
 animal_product_meat(pescado).
 animal_product_meat(atún).
 
-vegan_friendly(hongos).
-vegan_friendly(arroz).
+vegan_friendly(mushroom).
+vegan_friendly(rice).
 vegan_friendly(frijoles).
 vegan_friendly(pasta).
 vegan_friendly(tomate).
@@ -34,8 +34,8 @@ vegan_friendly(agua).
 vegan_friendly(vinagre).
 vegan_friendly(fresas).
 
-vegetarian_friendly(hongos).
-vegetarian_friendly(arroz).
+vegetarian_friendly(mushroom).
+vegetarian_friendly(rice).
 vegetarian_friendly(frijoles).
 vegetarian_friendly(pasta).
 vegetarian_friendly(tomate).
@@ -78,8 +78,8 @@ pasta_friendly(pescado).
 pasta_friendly(atún).
 pasta_friendly(huevo).
 pasta_friendly(miel).
-pasta_friendly(hongos).
-pasta_friendly(arroz).
+pasta_friendly(mushroom).
+pasta_friendly(rice).
 pasta_friendly(frijoles).
 pasta_friendly(tomate).
 pasta_friendly(lechuga).
@@ -109,11 +109,11 @@ special_dish_main(lomito, [lomito, cebolla, sal, vinagre]).
 special_dish_main(pollo, [pollo, cebolla, sal, vinagre]).
 special_dish_main(pescado, [pescado, cebolla, sal, vinagre]).
 special_dish_main(atún, [atún, cebolla, sal, vinagre]).
-special_dish_main(hongos, [hongos, cebolla, sal, vinagre]).
+special_dish_main(mushroom, [mushroom, cebolla, sal, vinagre]).
 
 special_dish_side(papa).
-special_dish_side(arroz).
-special_dish_side(hongos).
+special_dish_side(rice).
+special_dish_side(mushroom).
 special_dish_side(zucchini).
 
 /* USER DEFINITION */
@@ -127,7 +127,7 @@ is_lactose_intolerant(lactose_intolerant).
 is_lactose_intolerant(emilia).
 is_pasta_intolerant(pasta_intolerant).
 is_pasta_intolerant(luis).
-is_allergic(israel, hongos).
+is_allergic(israel, mushroom).
 is_allergic(juan, pasta).
 is_allergic(pablo, vinagre).
 cat_cannibal(fidel).
@@ -135,7 +135,7 @@ cat_cannibal(fidel).
 /* Define meals with their specific components */
 common_meal(basic_pasta, [pasta, orégano, tomate, aceite, sal]).
 common_meal(caesar_salad, [lechuga, tomate, vinagre, sal]).
-common_meal(hongos_al_horno, [hongos, queso, mantequilla, sal]).
+common_meal(mushroom_al_horno, [mushroom, queso, mantequilla, sal]).
 common_meal(ice_cream, [miel, leche, fresas]).
 
 /* Check if all components of a meal are vegan-friendly */
