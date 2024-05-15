@@ -11,12 +11,12 @@ animal_product_meat(atún).
 
 vegan_friendly(mushroom).
 vegan_friendly(rice).
-vegan_friendly(frijoles).
+vegan_friendly(beans).
 vegan_friendly(pasta).
 vegan_friendly(tomate).
 vegan_friendly(lechuga).
 vegan_friendly(chile).
-vegan_friendly(maíz).
+vegan_friendly(corn).
 vegan_friendly(zucchini).
 vegan_friendly(cebolla).
 vegan_friendly(sal).
@@ -36,12 +36,12 @@ vegan_friendly(fresas).
 
 vegetarian_friendly(mushroom).
 vegetarian_friendly(rice).
-vegetarian_friendly(frijoles).
+vegetarian_friendly(beans).
 vegetarian_friendly(pasta).
 vegetarian_friendly(tomate).
 vegetarian_friendly(lechuga).
 vegetarian_friendly(chile).
-vegetarian_friendly(maíz).
+vegetarian_friendly(corn).
 vegetarian_friendly(zucchini).
 vegetarian_friendly(cebolla).
 vegetarian_friendly(sal).
@@ -80,11 +80,11 @@ pasta_friendly(huevo).
 pasta_friendly(miel).
 pasta_friendly(mushroom).
 pasta_friendly(rice).
-pasta_friendly(frijoles).
+pasta_friendly(beans).
 pasta_friendly(tomate).
 pasta_friendly(lechuga).
 pasta_friendly(chile).
-pasta_friendly(maíz).
+pasta_friendly(corn).
 pasta_friendly(zucchini).
 pasta_friendly(cebolla).
 pasta_friendly(sal).
