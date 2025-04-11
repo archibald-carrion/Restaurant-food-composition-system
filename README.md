@@ -4,6 +4,63 @@
 
 Program written in prolog that allows waiters to answer specific questions based on knowledge of the menu, ingredients, and customer characteristics.
 
+## How to run the program
+
+---
+
+## 🧰 Option 1: Native Setup on Windows
+
+### ✅ 1. Install SWI-Prolog
+
+Download from:  
+👉 https://www.swi-prolog.org/Download.html
+
+Choose the 64-bit Windows installer. It comes with:
+- `swipl` command-line interface
+- XPCE GUI support
+- Prolog editor (`PceEmacs`)
+
+### ✅ 2. Run the built-in GUI
+
+To test that XPCE works:
+1. Open `swipl`
+2. Run this:
+
+```prolog
+?- use_module(library(pce)).
+?- new(Window, picture('Hello GUI')).
+?- send(Window, open).
+```
+
+A GUI window should appear! 🎉
+
+---
+
+### ✅ 3. Create Your Own XPCE App (Example: Button)
+
+Save this as `gui_test.pl`:
+
+```prolog
+:- use_module(library(pce)).
+
+run :-
+    new(Window, dialog('Simple GUI')),
+    send(Window, append(button('Click Me', message(@prolog, hello)))),
+    send(Window, open).
+
+hello :-
+    writeln('Button was clicked!').
+```
+
+Run it:
+
+```sh
+swipl gui_test.pl
+?- run.
+```
+
+---
+
 ### We are able to query:
 
 - [x] If a client with specific characteristics can consume a specific dish
