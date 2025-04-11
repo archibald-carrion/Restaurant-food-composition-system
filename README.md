@@ -1,4 +1,6 @@
-# The Restaurant
+# The Restaurant - A Prolog/XPCE Project
+[![Prolog](https://img.shields.io/badge/Prolog-brightgreen?style=flat-square&logo=prolog&logoColor=white)](https://www.swi-prolog.org/)
+[![XPCE](https://img.shields.io/badge/XPCE-48a832)](https://www.swi-prolog.org/)
 
 ## Description
 
@@ -17,28 +19,11 @@ Download from:
 
 Choose the 64-bit Windows installer. It comes with:
 - `swipl` command-line interface
-- XPCE GUI support
-- Prolog editor (`PceEmacs`)
+- XPCE GUI library
 
-### ✅ 2. Run the built-in GUI
+### ✅ 2. Test if XPCE works using the Button example
 
-To test that XPCE works:
-1. Open `swipl`
-2. Run this:
-
-```prolog
-?- use_module(library(pce)).
-?- new(Window, picture('Hello GUI')).
-?- send(Window, open).
-```
-
-A GUI window should appear! 🎉
-
----
-
-### ✅ 3. Create Your Own XPCE App (Example: Button)
-
-Save this as `gui_test.pl`:
+Save this as `button_test.pl`:
 
 ```prolog
 :- use_module(library(pce)).
@@ -55,9 +40,20 @@ hello :-
 Run it:
 
 ```sh
-swipl gui_test.pl
+swipl-win button_test.pl
 ?- run.
 ```
+
+Note: Depending on your installation swipl may work, but in my case it didn't so I had to run `swipl-win` instead.
+
+### ✅ 3. Run the program
+
+
+
+---
+
+## 🧰 Option 2: Docker
+
 
 ---
 

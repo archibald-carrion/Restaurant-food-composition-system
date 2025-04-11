@@ -1,3 +1,7 @@
+# :- prolog_load_context(directory, Dir),
+#    atom_concat(Dir, '/../xpce/prolog/lib', XPCEPath), 
+#    asserta(user:file_search_path(library, XPCEPath)).
+
 :- use_module(library(pce)).
 
 run :-
